@@ -4,7 +4,9 @@
         <a class="btn btn-outline-primary" href="<?php echo base_url('project/create/');?>"> 
             Create New Project
         </a>
+        <a href="<?php echo base_url('auth/logout'); ?>" class="btn btn-outline-danger">Logout</a>
     </div>
+
     <div class="card-body">
         <?php if ($this->session->flashdata('success')) {?>
             <div class="alert alert-success">
@@ -16,13 +18,15 @@
             <tr>
                 <th>Name</th>
                 <th>Description</th>
+                <th>Date Created</th>
                 <th width="240px">Action</th>
             </tr>
  
             <?php foreach ($projects as $project) { ?>      
-            <tr>
+            <tr limit="10">
                 <td><?php echo $project->name; ?></td>
-                <td><?php echo $project->description; ?></td>          
+                <td><?php echo $project->description; ?></td> 
+                <td><?php echo $project->created_at; ?></td>          
                 <td>
                     <a
                         class="btn btn-outline-info"
@@ -35,10 +39,18 @@
                         Edit
                     </a>
                     <a
-                        class="btn btn-outline-danger"
-                        href="<?php echo base_url('project/delete/'.$project->id) ?>"> 
+                        class="btn btn-outline-danger" onclick="confirmDelete('<?php echo base_url('project/delete/'.$project->id) ?>')"
+                        href="#"> 
                         Delete
                     </a>
+
+                    <script>
+                    function confirmDelete(url){
+                        if(confirm("Are you sure you want to Delete this data?")){
+                            window.location.href = url;
+                        }
+                    }
+                    </script>
                 </td>     
             </tr>
             <?php } ?>

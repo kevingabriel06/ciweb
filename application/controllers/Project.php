@@ -25,6 +25,7 @@ class Project extends CI_Controller {
   /*
  
     Display a record
+
   */
   public function show($id)
   {

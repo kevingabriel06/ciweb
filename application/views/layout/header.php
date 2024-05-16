@@ -1,3 +1,11 @@
+<?php
+if (!isset($_SESSION['id'])) {// !$this->session->userdata('User_ID')
+    $this->session->set_flashdata('error', 'Please log in first.');
+    redirect(base_url('login'));
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>

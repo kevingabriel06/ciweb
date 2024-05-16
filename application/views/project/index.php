@@ -4,7 +4,7 @@
         <a class="btn btn-outline-primary" href="<?php echo base_url('project/create/');?>"> 
             Create New Project
         </a>
-        <a href="<?php echo base_url('auth/logout'); ?>" class="btn btn-outline-danger">Logout</a>
+        <a href="<?php echo base_url('private_area/logout'); ?>" class="btn btn-outline-danger">Logout</a>
     </div>
 
     <div class="card-body">

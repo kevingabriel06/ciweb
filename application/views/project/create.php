@@ -23,11 +23,28 @@
           
             <div class="form-group mb-3">
                 <label for="image">Image:</label>
-                <input type="file" name="image" id="image" class="form-control">
+                <input type="file" name="image" id="image" class="form-control"  required onchange="previewImage(event)">
+                <img class="img-fluid" id="imagePreview" style="width: 150px; height: 150px; display:none">
             </div>
 
+
+           
             <button type="submit" class="btn btn-outline-primary">Save Project</button>
         </form>
        
     </div>
 </div>
+
+<script>
+    function previewImage(event){
+        var reader = new FileReader();
+
+        reader.onload = function (){
+            var output = document.getElementById('imagePreview');
+            output.style.display='block';
+            output.src=reader.result;
+        }
+
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>

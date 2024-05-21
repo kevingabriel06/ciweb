@@ -142,8 +142,21 @@ class Project extends CI_Controller {
   */
   public function delete($id)
   {
-    $item = $this->project->delete($id);
-    $this->session->set_flashdata('success', "Deleted Successfully!");
+    $project = $this->project->get($id);
+
+    $filename = $project->image;
+
+    $imagePath = 'assets/images/' . $filename; // Adjust the path as per your directory structure
+
+    // Check if the file exists and delete it
+    if (unlink($imagePath)) {
+      // Image file deleted successfully
+      $this->project->delete($id);
+      $this->session->set_flashdata('success', "Deleted Successfully!");
+  } else {
+      // Image file doesn't exist or couldn't be deleted
+      $this->session->set_flashdata('error', "Failed to delete image!");
+  }
     redirect(base_url('project'));
   }
  

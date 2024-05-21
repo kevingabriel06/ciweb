@@ -12,7 +12,7 @@
             </div>
         <?php } ?>
  
-        <form action="<?php echo base_url('project/update/' . $project->id);?>" method="POST">
+        <form action="<?php echo base_url('project/update/' . $project->id);?>" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="_method" value="PUT">
             <div class="form-group">
                 <label for="name">Name</label>
@@ -32,6 +32,11 @@
                     name="description"><?php echo $project->description;?></textarea>
             </div>
           
+            <div class="form-froup mb-3">
+                <label for="image">Image:</label>
+                <input type="file" name="image" id="image" class="form-control">
+            </div>
+
             <button type="submit" class="btn btn-outline-primary">Save Project</button>
         </form>
        

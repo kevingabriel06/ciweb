@@ -1,10 +1,11 @@
+
 <h2 class="text-center mt-5 mb-3"><?php echo $title; ?></h2>
 <div class="card">
     <div class="card-header">
         <a class="btn btn-outline-primary" href="<?php echo base_url('project/create/');?>"> 
             Create New Project
         </a>
-        <a href="<?php echo base_url('private_area/logout'); ?>" class="btn btn-outline-danger">Logout</a>
+        <a href="<?php echo base_url('logout'); ?>" class="btn btn-outline-danger">Logout</a>
     </div>
 
     <div class="card-body">
@@ -19,6 +20,7 @@
                 <th>Name</th>
                 <th>Description</th>
                 <th>Date Created</th>
+                <th>Image</th>
                 <th width="240px">Action</th>
             </tr>
  
@@ -26,7 +28,17 @@
             <tr limit="10">
                 <td><?php echo $project->name; ?></td>
                 <td><?php echo $project->description; ?></td> 
-                <td><?php echo $project->created_at; ?></td>          
+                <td><?php echo $project->created_at; ?></td>
+                <td>            
+                    <?php
+                    if ($project->image == null) {
+                        echo "No Image";
+                    } else { ?>
+                        <img src="<?= base_url('../assets/images/') . $project->image ?>"
+                            alt="<?= $project->image ?>" class="rounded" height=70px width=70px>
+                    <?php } ?>
+                </td>
+
                 <td>
                     <a
                         class="btn btn-outline-info"

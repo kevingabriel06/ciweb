@@ -25,7 +25,8 @@ class Project_model extends CI_Model{
     {    
         $data = [
             'name'        => $this->input->post('name'),
-            'description' => $this->input->post('description')
+            'description' => $this->input->post('description'),
+            'image' => $this->upload->data('file_name')
         ];
  
         $result = $this->db->insert('projects', $data);
@@ -49,7 +50,8 @@ class Project_model extends CI_Model{
     {
         $data = [
             'name'        => $this->input->post('name'),
-            'description' => $this->input->post('description')
+            'description' => $this->input->post('description'),
+            'image' => $this->upload->data('file_name')
         ];
  
         $result = $this->db->where('id',$id)->update('projects',$data);

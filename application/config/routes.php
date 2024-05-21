@@ -53,11 +53,16 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['register'] = "register/index";
-$route['login'] = "login/index";
-$route['logout'] = "login/logout";
 
-$route['project'] = "project/index";
+$route['login'] = "login/index";
+
+$route['register'] = "register/index";
+
+$route['logout'] = "project/logout";
+
+$route['upload'] = "imageuploadcontroller/index";
+
+$route['dashboard'] = "project/index";
 $route['project/create'] = "project/create";
 $route['project/store']['post'] = "project/store";
 $route['project/edit/(:num)'] = "project/edit/$1";
